@@ -1,0 +1,24 @@
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Python environments and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.log
+
+# JavaScript dependencies
+node_modules/
+
+# Local datasets and large generated artifacts
+*.csv
+*.parquet
+*.pkl
+*.pickle
+*.joblib
+*.model
+*.onnx
+*.zip
