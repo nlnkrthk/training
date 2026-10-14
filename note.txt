@@ -1,0 +1,2185 @@
+map
+filter 
+reduce
+iterator - iter next
+enumerate
+one hot encoding
+tuples
+deep nested unpacking
+named tuples - from collections import namedtuple
+_replace , _asdict
+set
+Lists, sets, and dictionaries are mutable, so they cannot be elements of a set.
+frozen set
+powerset - from itertools import combinations
+c= {*a,*b}
+zip()
+-----------------------------
+Day4
+loops
+iterate by items
+iterate by index
+enumerate
+iterate through zip of 2 Lists
+if arr1 is smaller than arr2 and both are zipped the missing pair for arr2 will not be displayed
+
+from itertools import zip_longest
+for x,y in zip_longest(names,marks, fillvalue="NA")
+
+for i in reversed(l1):
+    print(i)
+for i in sorted(l1):
+for i in sorted(l1,reversed=True)
+for i in sorted(10,0,-2) reverse step
+
+count = 0
+while count < 5:
+    print(count)
+    count = count + 1
+else:
+    print(count)
+
+pass is used in func and method just to define
+
+can use next for tuple but for list use iter()
+
+l=[0,0,0,0]
+print(any(l)) #return any non zero element, so False here
+
+print(all(l)) # returns True if there is no nonzero element
+
+from itertools import count
+for i in count(1):
+    print(i)
+    if i==5;
+        break
+
+from itertools import cycle
+for x in cycle("ABC"): # cyclic iteration
+    print(x)
+    if x=="C":
+        break
+
+for x in isslice(cycle("ABC"),10):
+    print(x)
+
+colors = ["erb","aer","rtn","aerg","srtn","str","ten"]
+
+for i in range(7):
+ print(next(colors))
+
+match day:
+    case 1:
+        print("MON")
+    
+    case 2:
+        print("TUE")
+    
+    case _:
+        print("DEFAULT")
+----------------------
+functions
+--------------------
+no overloading
+
+def posi(a,b,/,x,y):  # before / strictly positional , after / can be position or keyword
+    pass
+
+def keyw(name,*,city) # before * can be positional , after can be keyworded
+
+def cals(*a):
+    print(a)
+
+cals(1,2,3,4,5)
+
+def info(**kwargs):
+    print(kwargs)
+
+intfo(name="nalin",age="22")
+
+use lambda when 
+add = lambda x,y:x+y
+print(add(8,3))
+
+def greet():
+    print("hello")
+print(type(greet))
+def display(fun):
+
+
+def outer():
+    def inner():
+        print("i am in")
+    return inner
+x=outer()
+x()
+
+def square(x):
+    return x*x
+def calc(fun,val):
+    return fun(value)
+print(calc(square,5)) # first calc is called and square is called by passing in 5
+
+closure rememberance
+def outer(msg):
+    def inner():
+        print(msg)
+    return inner
+hello = outer("Hello")
+bye = outer("Bye")
+hello() #calls inner func
+bye()
+
+Generator
+def numbers():
+    for i in range(1,100000):
+        yield i
+g = numbers()
+print(numbers(g)) # call one time returns 1 , 2 times returns 1 2
+
+def numbers():
+    yield 1*2
+    yield 2*3
+g = numbers()
+print(next(g))
+print(next(g))
+print(next(g,"none")) # returns default val 
+
+def decorator(func):
+    def wrapper():
+        print("before")
+        func()
+        print("after")
+    return wrapper
+def display():
+    print("welcome")
+display = decorator(display)
+display()
+
+-------------------
+day 5
+
+recursion
+1 direct recursion
+2 indirect recursion / mutual recursion (find even or odd)
+3 tail functions
+4 head recursion
+5 tree recursion fibonacci series
+6 nested recursion
+7 linear recursion
+8 binary recursion
+9 n array recursion / multiple recursion
+
+String functions
+string is an arr of char
+
+n = 'hello' \
+'da'
+print(n) # hello da (same line)
+
+n = '''
+one
+two 
+three
+'''
+
+string is immutable
+
+ord('a') # ascii val
+chr(78) #prints char
+
+path=r"D:\summa\app.py" does not take as string but as raw data
+%s %d 
+print(f"i am {name}") # f string
+print("{}{}".format(name,id))
+
+s.upper()
+s.lower()
+s.swapcase()
+s.capitalize()
+s.title()
+s.casefold() #the special case is translated into english letter
+s.encode() #
+
+a = 'a'
+b = 'a'
+print(a is b) #True
+print(id(a))
+print(id(b))
+
+a = 'python'
+b = ''.join(['py','thon']) # False
+print(a is b)
+
+a = 'python'
+b = ''.join(['py'+'thon']) # True
+print(a is b)
+
+# Create a translation table
+table = str.maketrans(
+    "ae",  # First parameter (x): characters to be replaced
+    "12",  # Second parameter (y): replacement characters
+             # a -> 1, e -> 2
+    "o"    # Third parameter (z): characters to be deleted
+)
+
+
+---------------
+File handling
+
+f=open("notes.txt","r")
+content = f.read()
+print(content)
+
+
+f=open("notes.txt","a+")
+f.write("reibnhgtfggjgggo") #the cursor get to the end 
+f.seek(0) # reset cursor to first position and read
+content = f.read()
+print(content)
+
+with - keyword
+
+csv
+read write
+
+excel 
+pip install openpyxl
+
+binary File
+
+PIL library
+--------------------------------
+Day 6
+
+OOP
+procedure - top to bottom
+
+class stud:
+    def method(self):
+        print("hi")
+s1 = stud()
+s1.method1()
+
+default constructor
+    class emp:
+        def display(self):
+            print(self.name)
+            print(self.age)
+
+    e = emp()
+    e.name = "nalin"
+    e.age = 20
+
+    e.display()
+
+class var  #can be changed
+    class emp:
+        name = "jerom"
+        def display(self):
+            print(self.name)
+            print(self.age)
+
+    e = emp()
+    e.age = 20
+    e.display()
+
+constructor
+class Student:
+    company = "Prodapt"
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+
+Student.company = "Cognizant" #instance var mapping
+
+types of class
+parent
+listed
+derived
+
+nested class
+class Company:
+    class Employee:
+        def display(self):
+            print("i am in inner class")
+emp = Company.Employee()
+emp.display()
+
+
+class Company:
+    Value = 10 #not accessible inside inner class until it is sepcified by the class
+    class Employee:
+        def display(self):
+            print("i am in inner class",Company.Value) #acessing by sepcifying the parent class
+emp = Company.Employee()
+emp.display()
+
+class Company:
+
+    def __init__(self):
+        print("COmpany constructor")
+        self.conname = "prodapt"
+    
+    class Employee:
+            def __init__(self):
+                c1 = Company()
+                print("c1.conname")
+                print("Employee constructor")
+c = Company.Employee()
+
+
+__repr__
+
+data class----
+from dataclasses import dataclass
+@dataclass
+class Employee:
+    emp_id:int
+    emp_name:str
+    salary:float
+
+e1 = Employee(101,"nalin",12000)
+e2 = Employee(101,"nalin",12000)
+
+print(e1)
+print(e1 == e2) # True because it only looks at the values not the object reference
+
+singleton class---
+
+
+enumclass---------
+from enum import Enum
+
+class Color(Enum):
+    RED=1
+    GREEN=2
+    BLUE=3
+print(Color.RED.name)
+print(Color.RED.value)
+
+class Color(Enum):
+    RED=1
+    GREEN=2
+    BLUE=3
+for c1 in Color:
+    print(c1.value)
+
+frozen dataclass-------
+from dataclasses import dataclass
+@dataclass(forzen=True)
+class Employee:
+    emp_id:int
+    emp_name:str
+    salary:float
+e = Employee(101,"nalin",12000)
+e.emp_id = 30  #will not allow to change the value once set
+
+
+Factory class----
+
+Proxy class----
+
+class Printer:
+
+    def print_doc(self):
+        print("Printing...")
+
+
+class PrinterProxy:
+
+    def __init__(self):
+        self.printer = Printer()
+
+    def print_doc(self):
+        print("Permission Checked")
+        self.printer.print_doc()
+
+
+p = PrinterProxy()
+
+p.print_doc()
+
+meta class--------
+class std(type):
+    pass
+class demo(metaclass=std):
+    pass
+print(type(demo))
+
+class method-----
+works with class var
+
+instance method-----
+
+static method---
+
+constructor overloading------
+
+copy constructor----
+
+ENCAPSULATION----
+name mandling method
+@property getter
+
+----------
+Day 7
+types of inheritance-----
+single level inheritance---
+multiple inheritance---
+hierarchical inheritance---
+hybrid inheritance---
+mulitlevel inheritance---
+
+method resolution order--- #the order that python searches for method 
+class A:
+    def show(self):
+        print("A")
+
+class B(A):
+    def show(self):
+        pass
+
+class C(A):
+    def show(self):
+        pass
+
+class D(B,C):
+    pass
+
+obj = D()
+obj.show()
+print(D.mro())
+
+method overriding---
+class A:
+    def sound(self):
+        print("make sound A")
+class B(A):
+    def sound(self):
+        print("make sound B")
+obj = B()
+obj.sound() # make sound B
+
+super----
+class A:
+    def sound(self):
+        print("make sound A")
+
+class B(A):
+    def sound(self):
+        super().sound()
+        print("make sound B")
+obj = B()
+obj.sound() #make sound A make sound B
+
+#if child does not have parent class it uses its immediate super class's constructor
+
+class A:
+    def sound(self):
+        print("make sound A")
+
+class B(A):
+    def sound(self):
+        print("make sound B")
+        super().sound()
+
+class C(B):
+    def sound(self):
+        print("make sound C")
+        super().sound()
+obj = C()
+obj.sound()
+#make sound C
+make sound B
+make sound A
+
+types of polymorphism-------
+runtime ---
+compiletime---
+
+duck typing---
+method polymorphism---
+class Dog:
+    def sound(self):
+        print("Dog barks")
+
+class Cat:
+    def sound(self):
+        print("Cat meows")
+        
+
+def make_sound(animal):
+    animal.sound()
+
+dog = Dog()
+cat = Cat()
+a = make_sound(dog)
+print(a)
+
+
+operator overloading---
+class Student:
+    def __init__(self,marks):
+        self.marks = marks
+    def __add__(self,other):
+        return self.marks + other.marks
+    
+s1 = Student(99)
+s2 = Student(99)
+print(s1+s2)
+
+Abstraction-----
+#can have constructor for abstract method
+
+
+dunder methods---
+class Student:
+    def __new__
+    def __init__(self):
+        print("initializing")
+    def __del__(self):
+        print("obj deleted")
+
+class Student:
+    def __str__(self):
+        return "stud obj"
+    
+s= Student()
+print(s)
+
+repr----
+class Student:
+    def __str__(self):
+        return "stud obj"
+    def __repr__(self):
+        return "Student('John')"
+    
+s= Student()
+print(repr(s))
+
+__len__ -----
+class Student:
+    def __str__(self):
+        return "stud obj"
+    def __repr__(self):
+        return "Student('John')"
+    def __len__(self):
+        return 5
+    
+s= Student()
+print(repr(s))
+print(len(s))
+
+__getitem__ -----
+class Student:
+    def __init__(self):
+        self.data = [1,2,3]
+    def __getitem__(self,index):
+        return self.data[index]
+
+s= Student()
+print(s[1])
+print(str(s[1]))
+
+__setitem__ ----
+__getitem__----
+__contains__----
+class Student:
+    def __init__(self):
+        self.data = [1,2,3]
+    def __getitem__(self,index):
+        return self.data[index]
+    def __setitem__(self,index,value):
+        self.data[index] = value
+    def __contains__(self,num):
+        return num in self.data
+
+s= Student()
+s[1] = 123
+print(s[1])
+print(str(s[1]))
+print(1 in s)
+
+__iter__---
+__next__---
+class Counter:
+
+    def __init__(self):
+        self.count = 1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.count <= 3:
+            value = self.count
+            self.count += 1
+            return value
+        raise StopIteration
+
+for i in Counter():
+    print(i)
+
+SOLID principles-----
+behavioural design pattern---
+stratergy patterns----
+generics in python----
+
+Day8---------
+Exception handling---
+error-
+Exception-prediciting the error
+testing-
+
+
+try except ----
+try:
+    a = 10/0
+except:
+    print("error")
+
+types of errors,exceptions,-----
+
+raise-raise the condition(protection)---
+if age<= 0:
+    raise ZeroDivisionError("no to 0")
+
+try:
+    num = int(input("enter a num"))
+    print(10/num)
+except ValueError as e:
+    print(e)
+except ZeroDivisionError as e:
+    print(e)
+except Exception as e:
+    print(e)
+
+try:
+    d1 = {"name": "anitha", "id": 101}
+    print(d1["city"])
+except KeyError as e:
+    print("key error:", type(e).__name__)
+
+
+try:
+    file = open("abc.txt")
+except FileNotFoundError as e:
+    print("File does not exist.", type(e).__name__)
+
+nested try except---
+
+finally-runs anyways---
+try:
+    print(10 / 0)
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+finally:
+    print("Inside finally")
+
+user defined exception----
+create a exception class and inherite Exception
+
+exception chaining---
+
+ZeroDivisionError
+TypeError
+ValueError
+IndexError
+KeyError
+FileNotFoundError
+AttributeError
+NameError
+
+assert-check the condition and raise the error(testing)
+age = 200
+assert age > 100,"greater than exp"
+print("valid age")
+
+logging----
+
+
+day 9 ---------
+multi threading--
+
+task -> process -> thread
+task-set of processes
+process - unit of work
+thread-small unit of process
+
+GIL (Global Interpreter Lock) The Global Interpreter Lock (GIL) is a mechanism used by CPython (the standard Python implementation) that allows only one thread to execute Python bytecode at a time, even on a multi-core CPU.
+-memory management
+-
+
+multiprocessing---
+enables python to run on diff cpu cores
+
+- os.getpid() - used to get process id 
+
+process---
+from multiprocessing import Process
+import os
+def worker(name):
+    print(f"hello from {name} worker process",os.getpid())
+if __name__ == "__main__":
+    P = Process(target = worker,args = ("nalin",))
+    P.start()
+    P.join()
+    print("main process")
+
+
+pool---
+In Python, a Pool is a feature from the multiprocessing module that creates a group of worker processes to execute tasks concurrently.
+Instead of manually creating and managing multiple processes, a Pool handles them for you
+from multiprocessing import Pool
+
+from multiprocessing import Pool
+def square(n):
+    return n * n
+
+if __name__ == "__main__":
+    with Pool(processes=10) as pool:
+        result = pool.map(square, [1, 2, 3, 4, 5])
+
+    print(result)
+
+queue
+pipe 
+Lock
+value,array
+manager
+
+Day 11-----
+mysql----
+
+#connecting to mysql
+import mysql.connector
+conn = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    password = "root",
+    port = 3306,
+    database = "python_ai"
+)
+
+cursor = conn.cursor()
+tab = '''
+create table stud(
+id INT,
+name VARCHAR(10),
+branch VARCHAR(10),
+phone INT
+)
+'''
+cursor.execute("tab")
+print("done...")
+cursor.close()
+conn.close()
+
+#inserting values inside the table
+q1 = """INSERT INTO emp(id,name) VALUES(%s, %s)""" #everything should be passed in  as string
+values = (101,"anitha")
+cursor.execute(q1,values)
+
+#select table
+q1 = "select * from emp"
+cursor.execute(q1)
+r1 = cursor.fetchall() #list of tuples , each row
+for i in r1:
+    print(i)
+
+#cannot cursor.close() till the cursor has reached the end
+
+r2 = cursor.fetchmany(3) #specify the num of rows to return, return from the current pos of the cursor
+
+sqlalchemy-----
+SQLAlchemy is a Python library that lets you work with SQL databases (such as MySQL, PostgreSQL, SQLite, and SQL Server) using Python code instead of writing raw SQL for everything.
+
+create table and insert val----
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import declarative_base, sessionmaker
+
+# Database connection
+engine = create_engine(
+    "mysql+pymysql://root:root@localhost:3305/python_ai1",
+    isolation_level="AUTOCOMMIT"
+)
+
+# Base class
+Base = declarative_base()
+
+# Table class
+class Emp1(Base):
+    __tablename__ = "emp1"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(100), nullable=False)
+    phone = Column(Integer)
+
+# Create table if it doesn't exist
+Base.metadata.create_all(engine)
+
+# Create session
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# Insert a record
+emp = Emp1(name="Karthika", phone=12345678)
+
+session.add(emp)
+session.commit()
+
+print("Record inserted successfully.")
+
+# Close session
+session.close()
+
+select----
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import declarative_base, sessionmaker
+
+# Database connection
+engine = create_engine(
+    "mysql+pymysql://root:root@localhost:3305/python_ai1",
+    isolation_level="AUTOCOMMIT"
+)
+
+# Base class
+Base = declarative_base()
+
+# Table class
+class Emp1(Base):
+    __tablename__ = "emp1"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(100), nullable=False)
+    phone = Column(Integer)
+
+# Create table if it doesn't exist
+Base.metadata.create_all(engine)
+
+# Create session
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# Insert a record
+emp = session.query(Emp1).all()
+
+print("\ID\tNAME\t\tPHONE")
+print("-" * 35)
+
+for emo in emp:
+    print(emp.id, "\t", emp.name, "\t" , emp.phone)
+
+# Close session
+session.close()
+
+HTTP/HTTPS------
+url
+methods
+-put
+-Post 
+-patch
+-delete
+-get
+from fastapi import FastAPI
+
+app=FastAPI()
+
+@app.get("/")
+def Home():
+    return "arokiyasami"
+    
+#python -m uvicorn app:app --reload
+
+pydantic----
+data verfication
+
+API-------
+
+day 12-------
+
+passing parameters in url-----
+
+nested datatypes in pydantic-----
+
+
+T = TypeVar("T")--------
+BaseModel comes from Pydantic, which provides validation and serialization.
+Generic[T] tells Python that this class is generic, meaning it accepts a type parameter.
+class Library(BaseModel,Generic[T]):
+    name:str
+    books:list[Book]
+    date:T # can be of any type
+
+field validator-------
+
+error/exception handling-----
+in api execution
+from fastapi import FastAPI, HTTPException
+
+app = FastAPI()
+
+students = {
+    1: "John",
+    2: "Alice",
+    3: "David"
+}
+
+@app.get("/students/{student_id}")
+def get_student(student_id: int):
+
+    if student_id not in students:
+        raise HTTPException(
+            status_code=404,
+            detail="Student Not Found"
+        )
+
+    return {
+        "id": student_id,
+        "name": students[student_id]
+    }
+
+upload file---------
+
+from fastapi import FastAPI, UploadFile, File
+
+app = FastAPI()
+
+@app.post("/upload")
+async def upload_file(file: UploadFile = File(...)):
+    return {
+        "filename": file.filename,
+        "content_type": file.content_type
+    }
+
+@app.post("/upload")
+async def upload(file:UploadFile = File(...)):
+    contents = await file.read()
+    return {
+        "filename" : file.filename,
+        "size":len(contents)
+    }
+
+File(...) means:------
+
+Expect a file upload from the request body.
+The file is required (... means mandatory).
+
+UploadFile can receive any uploaded file:
+.txt
+.pdf
+.png
+.jpg
+.docx
+.xlsx
+.zip
+
+authentication-----
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
+import secrets
+
+app = FastAPI()
+
+security = HTTPBasic()
+
+
+@app.get("/login")
+def login(credentials: HTTPBasicCredentials = Depends(security)):
+
+    username = secrets.compare_digest(
+        credentials.username,
+        "admin"
+    )
+
+    password = secrets.compare_digest(
+        credentials.password,
+        "admin123"
+    )
+
+    if not (username and password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid Credentials",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+
+    return {
+        "message": "Login Successful",
+        "username": credentials.username
+    }
+
+
+api key-------
+from fastapi import FastAPI, Security, HTTPException
+from fastapi.security.api_key import APIKeyHeader
+app = FastAPI()
+api_key_header = APIKeyHeader(name="X-API-Key")
+API_KEY = "my-secret-key"
+ 
+@app.get("/secure")
+def secure(api_key: str = Security(api_key_header)):
+ 
+    if api_key != API_KEY:
+        raise HTTPException(
+            status_code=403,
+            detail="Invalid API Key"
+        )
+ 
+    return {
+        "message":"Access Granted"
+    }
+
+OAuth-----
+## OAuth (Open Authorization)
+
+* **OAuth** is an **authorization protocol** that allows an application to access a user's data from another service **without knowing the user's password**.
+* Used for **"Sign in with Google"**, **"Login with GitHub"**, **"Login with Microsoft"**, etc.
+* The user logs in on the provider's website and grants permission to the application.
+* The provider returns an **access token**, which the application uses to access allowed resources.
+* Permissions are controlled using **scopes** (e.g., read email, read calendar).
+* OAuth is mainly used for **third-party authentication and authorization**.
+
+### OAuth Flow
+
+```text
+User
+   ↓
+Click "Login with Google"
+   ↓
+Google verifies user
+   ↓
+User grants permission
+   ↓
+Google returns Access Token
+   ↓
+Application uses token to access Google APIs
+```
+
+### OAuth vs JWT
+
+* **OAuth** → Authorization protocol (how permission is granted).
+* **JWT** → Token format (how user information/claims are stored and securely transmitted).
+
+**For your FastAPI project:** ❌ OAuth is not required. A simple **JWT-based login** is sufficient.
+
+authentication and authorisation----
+bearer authentication----
+from datetime import datetime, timedelta
+from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from jose import JWTError, jwt
+from passlib.context import CryptContext
+app = FastAPI()
+SECRET_KEY = "mysecretkey123456789"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ 
+pwd_context = CryptContext(
+    schemes=["bcrypt"],
+    deprecated="auto"
+)
+oauth2_scheme = OAuth2PasswordBearer(
+    tokenUrl="token"
+)
+fake_users_db = {
+    "john": {
+        "username": "john",
+        "full_name": "John Smith",
+        "email": "john@test.com",
+        "hashed_password": pwd_context.hash("12345"),
+    }
+}
+def verify_password(plain_password, hashed_password):
+    return pwd_context.verify(
+        plain_password,
+        hashed_password
+    )
+ 
+def authenticate_user(username, password):
+ 
+    user = fake_users_db.get(username)
+ 
+    if not user:
+        return None
+ 
+    if not verify_password(
+        password,
+        user["hashed_password"]
+    ):
+        return None
+ 
+    return user
+def create_access_token(data: dict):
+ 
+    to_encode = data.copy()
+ 
+    expire = datetime.utcnow() + timedelta(
+        minutes=ACCESS_TOKEN_EXPIRE_MINUTES
+    )
+ 
+    to_encode.update(
+        {"exp": expire}
+    )
+ 
+    return jwt.encode(
+        to_encode,
+        SECRET_KEY,
+        algorithm=ALGORITHM
+    )
+@app.post("/token")
+ 
+def login(
+    form_data: OAuth2PasswordRequestForm = Depends()
+):
+ 
+    user = authenticate_user(
+        form_data.username,
+        form_data.password
+    )
+ 
+    if not user:
+ 
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid username/password"
+        )
+ 
+    access_token = create_access_token(
+        data={
+            "sub": user["username"]
+        }
+    )
+ 
+    return {
+        "access_token": access_token,
+        "token_type": "bearer"
+    }
+ 
+ 
+# -----------------------------------------
+# Current User
+# -----------------------------------------
+ 
+def get_current_user(
+    token: str = Depends(oauth2_scheme)
+):
+ 
+    credentials_exception = HTTPException(
+        status_code=401,
+        detail="Could not validate credentials"
+    )
+ 
+    try:
+ 
+        payload = jwt.decode(
+            token,
+            SECRET_KEY,
+            algorithms=[ALGORITHM]
+        )
+ 
+        username = payload.get("sub")
+ 
+        if username is None:
+            raise credentials_exception
+ 
+    except JWTError:
+        raise credentials_exception
+ 
+    return fake_users_db.get(username)
+ 
+ 
+# -----------------------------------------
+# Protected API
+# -----------------------------------------
+ 
+@app.get("/profile")
+ 
+def profile(
+    current_user=Depends(get_current_user)
+):
+ 
+    return current_user
+
+
+day 13---------
+
+Javascript--- language,JavaScript is single-threaded, which means it can do only one thing at a time.
+v8 engine-the interpreter, understands th code and releases the code according to cpu
+jit-java code to byte code
+js skips os and directly goes to cpu
+Node.js is a runtime environment that allows JavaScript to run outside the browser.
+
+npm stands for Node Package Manager.-----
+If your project needs Express, React, Axios, or Lodash, npm downloads them from the npm registry.
+
+npx stands for Node Package Execute.-----
+npx doesn't install packages for long-term use (unless needed as a dependency). Its main purpose is to run a package.
+
+
+repl mode----
+-read,evaluate,print,loop
+-it lets you enter JavaScript, see the result immediately, and then keep going.
+Test small pieces of JavaScript
+Practice syntax
+Try built-in functions
+Debug simple expressions
+Learn JavaScript interactively
+
+event looping---
+1. Call Stack is where JavaScript executes functions. 
+2. Web APIs / Node.js APIs
+3. Callback Queue When an asynchronous task finishes, its callback is placed in the Callback Queue.
+4.Event Loop keeps checking:
+"Is the Call Stack empty?"
+If No, it waits.
+If Yes, it moves the next callback from the queue to the Call Stack.
+
+--callback is a function that is passed as an argument to another function and is executed later when a specific task is completed.
+
+process object---
+process is a running instance of a program.
+console.log(process);-Prints the entire process object.
+console.log(process.pid);Prints the Process ID.
+console.log(process.cwd());Current Working Directory
+console.log(process.version);Shows the current Node.js version.
+console.log(process.platform);Shows the operating system.
+console.log(process.arch);Shows CPU architecture.
+console.log(process.memoryUsage());Shows how much memory the Node.js application is using.
+console.log(process.uptime());Shows how long the program has been running (in seconds).
+process.exit();Stops the Node.js application immediately.
+
+
+package.json---
+package.json is a JSON (JavaScript Object Notation) file that contains information about your project.
+It tells tools like npm (Node Package Manager):
+What your project is called
+Which packages (libraries) it needs
+Which version of those packages to install
+How to start your application
+Which scripts can be run
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "Learning JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.0.0"
+  }
+}
+
+^,~
+npm audit---
+npm audit scans the packages installed in your project and checks if any of them have known security vulnerabilities.
+
+npm audit fix---
+npm updates vulnerable packages to compatible versions when possible.
+
+npm test---
+runs the tests you've written for your project.
+Tests help verify that your code behaves as expected.
+
+npm start---
+It simply runs whatever command is defined under the "start" script in your package.json.
+
+nodemon---Nodemon is a development tool for Node.js that automatically restarts your application whenever it detects changes in your code files.
+Without nodemon, if you modify your code, you have to stop and restart the server manually.
+
+console.log - prints general information to the console.
+console.error("File not found");- Displays an error message. prgm stops
+console.warn("Password is weak"); - Something isn't ideal, but the program can continue running.
+console.table(users); - It prints arrays or objects in a table format.
+console.time("label"); console.timeEnd("label"); - These are used together to measure how long code takes to execute.
+
+Buffer.from--
+Buffer.alloc()--
+
+arrow function---
+
+exports a function---
+1 - named export
+export function add(a, b) {
+    return a + b;
+}
+multiple export
+
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+export { add, subtract };
+----
+import { add, subtract } from "./math.js";
+
+console.log(add(10, 5));
+console.log(subtract(10, 5));
+
+2 - default export (A file can have one default export.)
+export default function add(a, b) {
+    return a + b;
+}
+--------
+import add from "./add.js";
+
+console.log(add(4, 6));
+
+module---
+
+async/await---------
+async function createfile()
+    await fs.writeFile
+
+async makes a function return a Promise.
+await pauses an async function until a Promise finishes.
+await makes asynchronous code look like synchronous code.
+Use try/catch to handle errors.
+async/await is the modern way to write asynchronous JavaScript.
+
+promise---
+
+file handling-------
+
+create file folder---
+
+http---
+import http from "http";
+
+const server = http.createServer((Request, Response) => {
+    Response.end("<h1>welcome to node js</h1>")
+});
+
+server.listen(3000)
+
+console.log("server working")
+
+
+JWT (JSON Web Token)-----------
+is a secure string that represents a user's identity.
+Instead of asking the user to log in before every request, the server gives the user a token after they log in once.
+The user then sends that token with every future reques
+--process
+User logs in with a username and password.
+The server verifies the credentials against the database.
+If they're correct, the server creates a signed JWT.
+The client stores the JWT.
+The client sends the JWT in the Authorization: Bearer <token> header with protected requests.
+The server verifies the token's signature and expiration.
+If the token is valid, the request is processed; otherwise, the server returns 401 Unauthorized.
+
+
+
+day 14 -------------
+versions of js ----
+type : module
+
+server---
+const server = http.createServer((req, res) => {
+    console.log("Method:", req.method);
+    console.log("URL:", req.url);
+
+    res.write("Hello ");
+    res.write("from ");
+    res.write("Node.js Server!");
+
+    res.end();
+});
+
+writeHead() → response status + headers
+write() → response body/data
+end() → finish the response and send it to the client completely.
+
+GET---
+POST---
+
+REST Api---
+import http from 'http';
+let students = [
+    { id: 1, name: 'John Doe', age: 20 },
+    { id: 2, name: 'Jane Smith', age: 22 },
+    { id: 3, name: 'Michael Johnson', age: 19 }
+];
+const server = http.createServer((req, res) => {
+    if (req.method === 'GET' && req.url === '/students') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(students));
+    }
+});
+ 
+server.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000');
+});
+
+Express---
+Express.js is a web framework for Node.js that makes it much easier to build web servers, websites, and APIs.
+easy routing
+build api easily
+http request
+
+swagger---
+api documentation
+used to test api
+
+json---
+JSON stands for JavaScript Object Notation.
+It is a lightweight format used to store and exchange data between applications.
+1 Create a JavaScript object
+2 Convert the object to JSON (when sending data)
+3 Send or store the JSON
+4 Receive JSON data
+5 Convert JSON back to a JavaScript object
+
+mysql-swagger------
+
+
+day 16----------
+
+pandas---
+numpy----
+index vs position---
+data cleaning----
+
+day 17-----
+
+EDA----
+
+feature engineering----
+
+matplotlib and seaborn----
+
+insights---
+data source and integeration---
+streaming data
+cloud storage
+aws 
+types of ingestion---
+batch ingestion - data collected at a scheduled time
+real time ingestion - gets updated immediately
+
+ETL----
+extract,transform,Load 
+
+Extracting data from multiple sources---
+raw data is collected from various data sources. 
+These sources can be diverse, ranging from structured sources like databases (SQL, NoSQL), 
+to semi-structured data like JSON, XML or unstructured data such as emails or flat files.
+
+Transforming it into a consistent format---
+the data is cleaned, aggregated and formatted according to business rules. 
+Data Filtering: Removing irrelevant or incorrect data.
+Data Sorting: Organizing data into a required order for easier analysis.
+Data Aggregating: Summarizing data to provide meaningful insights (e.g., averaging sales data).
+
+
+Loading it into a central data warehouse or data lake----
+Full Load: All data is loaded into the target system, often used during the initial population of the warehouse.
+Incremental Load: Only new or updated data is loaded, making this method more efficient for ongoing data updates
+
+
+1 - diff sources (csv,excel,api,sql)
+2 - extract
+3 - transform(clean + convert + merge + validate)
+4 - clean data ( missing val , outliers , merge , feature engg, validate)
+5 - Load
+6 - Data warehouse/database
+
+
+
+
+day 18----
+
+Airflow-------
+-Apache Airflow is an open-source workflow orchestration tool written in Python. 
+It is used to schedule, automate, and monitor workflows, especially data engineering, ETL pipelines, and machine learning workflows.
+orchestration- 
+
+1 workflow--
+workflow is a sequence of tasks that are executed in a specific order to complete a larger process.
+for eg : ml workflow
+Collect Data
+      ↓
+Clean Data
+      ↓
+Feature Engineering
+      ↓
+Train Model
+      ↓
+Evaluate Model
+      ↓
+Deploy Model
+
+Instead of manually running each Python script, 
+Airflow automatically runs the complete workflow.
+
+2 DAG--
+DAG is the blueprint of a workflow.
+
+Directed → Tasks have a direction (A → B → C).
+Acyclic → No loops are allowed.
+Graph → Collection of connected tasks.
+
+3 task--
+A task is a single unit of work.
+One task should perform one logical operation.
+
+Examples:
+Read a CSV
+Execute SQL
+Train a model
+Send an email
+Call an API
+
+4 Operators---
+
+Operators define what the task does.
+Types of operators
+1 action operator
+    python operator - runs python functions
+    email operator - sends email
+    bash operator - runs linux commands
+    Sql operator - execute sql
+2 transfer operator (moving data)
+3 sensor operator (waits for an event to occur file transfer etc)
+3 branch operator
+4 trigger operator
+5 latestonly operator
+
+5 dependency---
+Which task must finish before another task starts.
+
+6 scheduling---
+The scheduler checks your DAGs and decides:
+
+Which tasks should run
+When they should run
+Which dependencies are satisfied
+
+Example:Run every day at 2 AM
+
+7 Retry---
+Sometimes tasks fail because of temporary issues, such as:
+
+Database unavailable
+Network timeout
+API server busy
+Internet disconnected
+
+Instead of marking the workflow as failed immediately, 
+Airflow can retry the task automatically.
+
+Cron----
+ is a time-based scheduling system used in Unix/Linux to automatically execute commands or scripts at specified times. In Apache Airflow, 
+cron expressions are used to define when a DAG should run.
+
+day 19-----------
+Kafka------------
+
+producer
+broker
+topic
+consumer
+
+
+mongo db----
+-MongoDB is a NoSQL database that stores data in a flexible structure. 
+A database is like a container for data, a collection is a group of related records, and a document is a single record stored in JSON-like format.
+-It creates three default databases: admin, local, and config
+
+-- Collection in MongoDB is similar to a table in relational databases.
+It holds a group of documents and is a part of a database. 
+Collections provide structure to data, but like the rest of MongoDB, they are schema-flexible.
+
+BSON---
+MongoDB stores data as BSON documents, a binary form of JSON that supports additional data types.
+Data is stored as BSON (Binary JSON) documents.
+BSON supports more data types than JSON.
+Documents use field–value (key–value) pairs.
+Field values can be of any BSON-supported type.
+
+day 21------
+
+ml----
+model , feature , target , training , prediciton
+
+supervised ml----
+multiclass
+multilabel
+imbalanced classification
+
+
+regression---
+to predict a continous value , target , label
+
+1 - linear regression
+2 - multiple linear regression
+3 - polynomial regression
+4 - ridge regression
+5 - lasso regression
+6 - elastic net regression
+7 - decision tree regression
+8 - support vector regressor
+9 - random forest regressor
+
+
+unsupervised ml---
+Unsupervised Learning is a type of machine learning in which the model learns patterns, structures, or relationships from unlabeled data. 
+Unlike supervised learning, the dataset does not contain target/output labels.
+The algorithm discovers hidden patterns or groups in the data on its own.
+
+The main objective is to discover:
+
+Similar groups (Clusters)
+Hidden relationships
+Patterns
+Data structure
+Outliers
+Lower-dimensional representations
+
+1 - clustering
+
+Clustering is an unsupervised learning technique that groups similar data points into clusters based on their similarities, 
+such that data points within the same cluster are more similar to each other than to those in other clusters.
+    
+- partition based - kmeans
+ technique that groups unlabeled data into clusters based on similarity
+Initialization: We begin by randomly selecting k cluster centroids.
+Assignment Step: Each data point is assigned to the nearest centroid, forming clusters.
+Update Step: After the assignment, we recalculate the centroid of each cluster by averaging the points within it.
+Repeat: This process repeats until the centroids no longer change or the maximum number of iterations is reached.
+
+- hierarchical - agglomerative
+builds a hierarchy of clusters using a bottom-up approach. It starts by treating every data point as an individual cluster, 
+then repeatedly merges the two most similar clusters until all data points belong to a single cluster or a stopping condition is met.
+    Treat each data point as an individual cluster.
+    Calculate the distance between all clusters and merge the two closest clusters.
+    Recalculate the distances using a linkage method (Single, Complete, Average, or Ward) and repeat the merging process.
+    Continue until one cluster remains or cut the dendrogram at the desired level to obtain the required number of clusters.
+ 
+- density based - DBSCAN
+groups together data points located in high-density regions and labels points in low-density regions as noise (outliers).
+Unlike K-Means, it does not require the number of clusters (K) to be specified beforehand.
+    Choose the values of ε (radius) and MinPts (minimum neighbors).
+    Identify Core Points by checking if they have at least MinPts neighbors within ε.
+    Expand clusters by connecting neighboring Core Points and including Border Points.
+    Repeat until all points are processed, leaving isolated points as Noise (outliers). 
+    
+- distribution based - GMM
+assumes the data is generated from a mixture of several Gaussian (Normal) distributions.
+Instead of assigning each data point to exactly one cluster,
+GMM calculates the probability that a data point belongs to each cluster and assigns it to the most probable one.
+    Initialize the number of Gaussian distributions and their parameters (mean, variance, and mixing weights).
+    Calculate the probability of each data point belonging to every Gaussian distribution (E-Step).
+    Update the Gaussian parameters based on these probabilities (M-Step).
+    Repeat the E-Step and M-Step until the parameters converge, then assign each point to the cluster with the highest probability.
+    
+- grid based
+divides the entire data space into a fixed number of grid cells and performs clustering on these cells instead of individual data points. 
+Dense grid cells are grouped together to form clusters, while sparse cells are ignored or treated as noise.
+    Divide the feature space into equal-sized grid cells.
+    Count the number of data points inside each grid cell.
+    Identify dense cells using a predefined threshold.
+    Merge adjacent dense cells to form clusters.
+
+- model based
+that assumes the data is generated from an underlying mathematical or statistical model. 
+The algorithm tries to find the model that best explains the data and uses that model to identify clusters. 
+    Assume a mathematical or statistical model that represents the data.
+    Initialize the model parameters (e.g., means, variances, probabilities).
+    Fit and update the model parameters to best explain the data.
+    Assign each data point to the cluster (model) that best explains it after convergence.
+
+2 - association rule learning
+technique used to discover relationships, patterns, or associations between items in a dataset. 
+It identifies which items frequently occur together and generates rules that describe these relationships.
+    Collect transaction data and identify frequent itemsets based on a minimum support threshold.
+    Generate association rules from the frequent itemsets.
+    Evaluate each rule using Support, Confidence, and Lift.
+    Select the strongest rules for analysis or recommendations.
+
+3 - dimensionality reduction
+4 - anomaly detection
+
+
+day 24-----
+
+reinforcement learning---
+agent learns to make decisions by interacting with an environment and receiving rewards or penalties for its actions. 
+The objective is to learn a strategy (called a policy) that maximizes the total cumulative reward over time.
+| Term            | Meaning                        |
+| --------------- | ------------------------------ |
+| **Agent**       | Learner or decision-maker      |
+| **Environment** | World the agent interacts with |
+| **State**       | Current situation              |
+| **Action**      | Decision taken by the agent    |
+| **Reward**      | Feedback after an action       |
+| **Policy**      | Strategy for choosing actions  |
+| **Goal**        | Maximize cumulative reward     |
+
+
+model based----
+Model-Based Reinforcement Learning is an approach in which the agent knows or learns a model of the environment (how the environment behaves). 
+Using this model, the agent predicts future states and rewards before taking an action.
+- How It Works
+Learn or obtain the environment model.
+Predict the next state and reward for possible actions.
+Choose the action that gives the highest future reward.
+Execute the action and update the model if necessary.
+
+model free----
+Model-Free Reinforcement Learning is an approach in which the agent does not know or learn the environment model. 
+Instead, it learns the best actions directly through trial and error using rewards received from the environment.
+
+
+
+Q-learning----
+alpha
+gamma
+epsilon
+
+SARSA-----
+
+
+Train Test split-----
+Training Set – Used to train (learn) the machine learning model.
+Test Set – Used to evaluate how well the trained model performs on unseen data.
+Validation Set - is a portion of the dataset used during model development to evaluate the model, tune hyperparameters, 
+and select the best model before testing it on the final test set.
+
+overfitting---
+Overfitting occurs when a machine learning model learns not only the underlying patterns in the training data but also the noise and random fluctuations. 
+As a result, it performs very well on the training data but poorly on new, unseen data.
+
+evaluation metrics---
+
+classification--
+Classification Evaluation Metrics are measures used to evaluate how well a classification model predicts the correct class labels
+
+-confusion matrix
+|                     |  **Predicted Positive** |  **Predicted Negative** |
+| ------------------- | ----------------------: | ----------------------: |
+| **Actual Positive** |  **True Positive (TP)** | **False Negative (FN)** |
+| **Actual Negative** | **False Positive (FP)** |  **True Negative (TN)** |
+
+
+-accuracy
+Accuracy measures the overall percentage of correct predictions made by the model.
+Accuracy= TP+TN​
+        TP+TN+FP+FN
+
+-precision
+Precision measures how many predicted positive cases are actually positive.
+TP/TP+FP
+
+-recall(sensitivity)
+Recall measures how many actual positive cases were correctly identified.
+TP/TP+FN
+
+-f1 score
+F1 Score is the harmonic mean of Precision and Recall.
+F1=2×(PrecisionxRecall)
+    (Precision+Recall​)
+
+
+regression metrics--
+Regression Evaluation Metrics are measures used to evaluate how accurately a regression model predicts 
+continuous numerical values by comparing the predicted values with the actual values
+
+MAE - MAE is the average of the absolute differences between the actual values and predicted values.
+MAE = (1/n) * Σ|Actual - Predicted|
+
+
+MSE -MSE is the average of the squared differences between the actual and predicted values.
+MSE = (1/n) * Σ(Actual - Predicted)²
+
+RMSE - RMSE is the square root of the Mean Squared Error (MSE).
+It converts the squared error back to the original unit of the target variable.
+RMSE = √MSE
+
+R^2 score 
+R² Score measures how much of the variation in the target variable is explained by the regression model.
+R² = 1 - (SSres / SStot)
+SSResidual = Sum of Squared Errors.
+SSTotal = Total variation in the target values.
+
+
+regularisation--
+used to reduce overfitting by adding a penalty term to the model's loss (cost) function. 
+This penalty discourages the model from learning overly complex patterns and helps it generalize better to unseen data.
+
+
+cross validation---
+A single train-test split may give unreliable results because the performance depends on one random split.
+K-Fold Cross Validation evaluates the model on multiple splits, providing a more reliable estimate of its performance.
+
+-k fold cross validation 
+K-Fold Cross Validation evaluates the model on multiple splits, providing a more reliable estimate of its performance.
+    Split the dataset into K equal folds.
+    Train the model on K−1 folds and validate it on the remaining fold.
+    Repeat until every fold has been used once as the validation set.
+    Average the validation scores to obtain the final model performance.
+
+
+-stratified k fold
+Stratified K-Fold Cross Validation is a variation of K-Fold Cross Validation that ensures each fold has approximately the same class distribution as the original dataset. 
+It is mainly used for classification problems, especially when the dataset is imbalanced.
+
+model serialization---
+pkl
+joblib
+
+
+
+day 26-----
+
+Big data---
+
+hadoop 
+spark - pyspark
+Kafka
+Hive
+HDFS
+
+hadoop 
+    - HDFS - storage
+    -mapreduce - processing
+    -yarn resource management
+    -cluster
+    -node
+
+
+spark - distributed processing engine
+
+Apache Spark is a framework used to process large amounts of data.
+PySpark is the Python API for Apache Spark.
+Apache Spark is a framework used to process large amounts of data.
+Apache Spark
+      ↓
+  Python API
+      ↓
+   PySpark
+
+
+                 Spark
+
+              Large Data
+                  ↓
+        ┌─────────┼─────────┐
+        ↓         ↓         ↓
+     Machine   Machine   Machine
+        ↓         ↓         ↓
+     Process   Process   Process
+        └─────────┼─────────┘
+                  ↓
+              Result
+
+
+sparksession -The object through which your Python program communicates with Spark.
+SparkSession.builder - This starts building/configuring your Spark session.
+.appName("MyFirstSparkApp") - Gives your Spark application a name.
+.getOrCreate() - Get an existing SparkSession if one exists; otherwise create a new one.
+spark is just a Python variable.It contains a SparkSession object.You then use it for Spark operations.
+
+rdd
+stages
+
+.collect()
+.take()
+.count()
+.reduce()
+.getNumPartitions()
+.glom().collect()
+
+
+sc = spark.
+
+cache
+
+repartition
+coalesce
+
+row col definition
+schema definiton
+
+Columns
+Rows
+show()
+printSchema()
+describe()
+select()
+alias()
+withColumn()
+drop()
+filter()
+where()
+distinct()
+orderBy()
+limit()
+ 
+day 27-----------
+
+df.count(sum("salary")).show()
+df.select(avg("salary")).show()
+df.select(min("salary")).show()
+df.select(max("salary")).show()
+df.select(count("salary")).show()
+df.select(count_distinct("salary")).show()
+
+df.select(sum("dept")).count().show()
+df.agg(sum("salary")).show()
+df.groubBy(("salary")).agg(sum("salary")).show()
+
+multiple aggregration in one groubBy
+
+
+Joins------
+inner join ----
+res = emp_df.join(dept_df,"dept_id","inner")
+
+res = emp_df.join(
+    dept_df,
+    emp_df.department_id == dept_df.dept_id,
+    "inner"
+)
+
+right join
+left join
+full outer join
+
+left semi join
+left anti join
+
+broadcast join
+
+handling duplicate col 
+handling null
+
+
+orc/parquet---
+
+
+common table expression -----
+
+
+udf-----
+
+
+JDBC----
+
+
+
+day 29---------
+
+React Hooks
+│
+├── State Hooks
+│   └── useState
+│
+├── Effect Hooks
+│   └── useEffect
+│
+├── Ref Hooks
+│   └── useRef
+│
+└── Context Hooks
+    └── useContext
+
+
+1 - State Hook - useState()--------------
+A component often needs to remember information.
+setCount()
+   ↓
+State changes
+   ↓
+React re-renders component
+   ↓
+Component runs again
+   ↓
+New state value
+   ↓
+UI updates
+
+
+eg code --
+import { useState } from "react";
+
+function Counter() {
+
+    const [count, setCount] = useState(0);
+
+    return (
+        <div>
+
+            <h1>{count}</h1>
+
+            <button onClick={() => setCount(count + 1)}>
+                Increase
+            </button>
+
+            <button onClick={() => setCount(count - 1)}>
+                Decrease
+            </button>
+
+        </div>
+    );
+}
+
+2. Effect Hook — useEffect()----------
+Sometimes your component needs to perform an operation outside the normal rendering process.
+API calls
+Timers
+Event listeners
+Browser APIs
+Subscriptions
+Updating document title
+
+flow---
+Component renders
+      ↓
+useEffect runs
+      ↓
+API request
+      ↓
+Backend
+      ↓
+Response
+      ↓
+setUsers()
+      ↓
+State changes
+      ↓
+Component re-renders
+      ↓
+Users displayed
+
+code---
+
+const [users, setUsers] = useState([]);
+
+useEffect(() => {
+
+    const getUsers = async () => {
+
+        const response = await axios.get("/users");
+
+        setUsers(response.data);
+
+    };
+
+    getUsers();
+
+}, []);
+
+
+3. Reference Hook — useRef()--------
+useRef gives you a value that survives re-renders without causing a re-render when you change it.
+
+flow---
+input
+ ↓
+ref={inputRef}
+ ↓
+inputRef.current
+ ↓
+actual DOM input
+
+code---
+import { useRef } from "react";
+
+function App() {
+
+    const inputRef = useRef(null);
+
+    const focusInput = () => {
+        inputRef.current.focus();
+    };
+
+    return (
+        <div>
+
+            <input ref={inputRef} />
+
+            <button onClick={focusInput}>
+                Focus Input
+            </button>
+
+        </div>
+    );
+}
+
+
+4. Context Hook — useContext()------
+Context allows you to make data available to many components without manually passing props through every level.
+
+Suppose you have:
+App
+ │
+ ├── Navbar
+ │    └── UserProfile
+ │
+ └── Dashboard
+      └── UserInfo
+
+context solves this
+        Context
+       /   |   \
+      ↓    ↓    ↓
+   Navbar Dashboard Profile
+
+code---
+import { createContext, useContext } from "react";
+
+const UserContext = createContext();
+
+function App() {
+
+    const user = {
+        name: "Nalin",
+        role: "Developer"
+    };
+
+    return (
+        <UserContext.Provider value={user}>
+            <Dashboard />
+        </UserContext.Provider>
+    );
+}
+
+
+
+routing------
+Displaying different React components based on the URL.
+
+
+import { Routes, Route } from "react-router-dom";
+
+function App() {
+    return (
+        <Routes>
+
+            <Route path="/" element={<Home />} />
+
+            <Route path="/login" element={<Login />} />
+
+            <Route
+                path="/employees"
+                element={<Employees />}
+            />
+
+        </Routes>
+    );
+}
+
+export default App;
+nested routing
+
+
+Claude--------------
+
+prompt Engineering-----
